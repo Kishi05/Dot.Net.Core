@@ -1,7 +1,23 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.FileProviders;
+using Section5.Constraints;
+using System.ComponentModel.Design.Serialization;
 using System.Runtime.InteropServices;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+{
+    // Static - Second Location
+    WebRootPath = "CustomRoot" // Custom point to particular folder for static files
+});
+
+builder.Services.AddRouting(options =>
+{
+    options.ConstraintMap.Add("CustomName", typeof(CustomName));
+});
+
 var app = builder.Build();
+
+#region Routing Section
 
 #region Differnt ways of using Route using Middleware
 
@@ -166,6 +182,63 @@ var app = builder.Build();
 //    });
 
 //});
+
+#endregion
+
+#region Custom Route Constraints
+
+//app.UseRouting();
+
+//app.UseEndpoints(endpoints => {
+//    endpoints.Map("/param/{name:customName}",async (context) =>
+//    {
+//        await context.Response.WriteAsync("Custom Route Constraints 1-0 ");
+//    });
+//});
+
+#endregion
+
+#region EndPoint Selection Order
+
+//Those are rules to which the url in endpoint will take precidence - check notes for the same.
+//Leaving this as its mainly based on theory concept and rules only.
+
+#endregion
+
+#endregion
+
+#region wwwRoot and Static Files
+
+// static files are placed in wwwRoot folder inside project for access - If any other folder or location needs to be used it needs custom configuration.
+// wwwroot - is the default location for static files 
+// creating a folder with wwwroot under main solution will be enough
+// Can access directly example http://localhost:5108/cat-image.png
+
+// Static - First Location
+app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+    Path.Combine(app.Environment.ContentRootPath, "CustomMultiRoot").ToString()
+    )
+});
+
+app.UseRouting();
+
+app.UseEndpoints(endpoints => {
+
+    endpoints.Map("/", async (context) =>
+    {
+        await context.Response.WriteAsync("Welcome");
+    });
+
+    endpoints.Map("/download", async (context) =>
+    {
+        await context.Response.WriteAsync("Download Started");
+    });
+
+});
 
 #endregion
 
