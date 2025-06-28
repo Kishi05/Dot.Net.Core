@@ -1,24 +1,34 @@
-﻿This repository is a curated, section-wise collection of practical implementations and architectural explorations in ASP.NET Core 8, inspired by the structure of the highly rated course.
+# 📘 ASP.NET Core 8 – Practice & Architecture Learning Repository
 
-⚠️ These are not reused course examples — they represent my own engineered solutions, interpretations, and code architecture practices, built from the ground up for deeper mastery.
+This repository is a curated, section-wise collection of practical implementations and architectural explorations in **ASP.NET Core 8**, inspired by the structure of the highly rated course.
 
-🛠️ Technology Stack & Focus Areas
+> ⚠️ These are **not reused course examples** — they represent my own engineered solutions, interpretations, and code architecture practices, built from the ground up for deeper mastery.
 
-.NET 8 (LTS) – Embracing the latest in performance, minimal APIs, and native AOT
-ASP.NET Core – Modular, cloud-ready web framework for modern back-end development
-Entity Framework Core – Clean data access using both code-first and DB-first approaches
-C# 12 – Leveraging new language features for clarity and conciseness
-Dependency Injection, Middleware Pipelines, Configuration, Logging, and Modular Design Patterns
+---
 
-🧩 Repository Structure
+## 🛠️ Technology Stack & Focus Areas
 
-Organized section-by-section based on the course outline
-Focus on testable, maintainable, and production-level patterns
-Hands-on implementation of core principles like SOLID, Clean Architecture, and Separation of Concerns
- Includes commentary, observations, and decisions to demonstrate design thought process
+- **.NET 8 (LTS)** – Embracing the latest in performance, minimal APIs, and native AOT  
+- **ASP.NET Core** – Modular, cloud-ready web framework for modern back-end development  
+- **Entity Framework Core** – Clean data access using both code-first and DB-first approaches  
+- **C# 12** – Leveraging new language features for clarity and conciseness  
+- **Dependency Injection**, **Middleware Pipelines**, **Configuration**, **Logging**, and **Modular Design Patterns**
 
-🎯 Purpose
+---
+
+## 🧩 Repository Structure
+
+- Organized section-by-section based on the course outline  
+- Focus on **testable**, **maintainable**, and **production-level** patterns  
+- Hands-on implementation of core principles like **SOLID**, **Clean Architecture**, and **Separation of Concerns**  
+- Includes **commentary, observations, and design decisions** to demonstrate architectural thinking
+
+---
+
+## 🎯 Purpose
+
 This repo is built as a personal learning companion to:
-Reinforce concepts from a professional course
-Apply real coding practices with clarity
-Serve as a quick-reference guide to key ASP.NET Core 8 topics
+
+- Reinforce concepts from a professional course  
+- Apply real coding practices with clarity  
+- Serve as a quick-reference guide to key **ASP.NET Core 8** topics
