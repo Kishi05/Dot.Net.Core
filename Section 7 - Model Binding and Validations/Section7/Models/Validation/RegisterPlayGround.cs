@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Section7.Models.Validation
@@ -7,11 +8,13 @@ namespace Section7.Models.Validation
     {
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(3),MaxLength(20)]
+        [Required(ErrorMessage = "{0} is Mandatory")]
+        //[ValidateNever] -> Skip Validation, it skips even if other annotations are present and can place it any order.
+        [Display(Name = "Person Name")]
+        [MinLength(3), MaxLength(20)]
         public string Name { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50, MinimumLength = 10, ErrorMessage = "{0} should be Mininum {2} to Maximum {1} characters")]
         [MaxLength(50)]
         public string? Address { get; set; }
 
@@ -37,7 +40,7 @@ namespace Section7.Models.Validation
         public string Password { get; set; }
 
         [Required]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "{1} and {0} doesnot match")]
         public string ConfirmPassword { get; set; }
 
         public override string ToString()
