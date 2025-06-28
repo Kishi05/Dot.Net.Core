@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Section7.Models
+namespace Section7.Models.ModelBinding
 {
     public class BookWithFrom
     {

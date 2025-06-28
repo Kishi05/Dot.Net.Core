@@ -42,7 +42,7 @@
 */
 
 using Microsoft.AspNetCore.Mvc;
-using Section7.Models;
+using Section7.Models.ModelBinding;
 
 namespace Section7.Controllers
 {
