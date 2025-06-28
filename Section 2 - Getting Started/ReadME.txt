@@ -1,0 +1,1 @@
+This is a sample Asp.Net Core Empty Project - No changes to initial structure except the launch settings profile for http is update to Kestrel.
