@@ -1,0 +1,19 @@
+﻿<h1>Consume Partial View Using JavaScript</h1>
+
+<button type="button" class="btn btn-primary" id="load-partial">Load Data</button>
+
+<div id="PartialView"></div>
+
+<script>
+    try{
+        document.querySelector("#load-partial").addEventListener("click",async function(){
+            var response = await fetch("PartialViewReturn");
+            var data = await response.text();
+            document.querySelector("#PartialView").innerHTML = data;
+        });
+    }
+    catch (error) {
+        console.error("Error loading partial view:", error);
+        alert("Failed to load content.");
+    }
+</script>

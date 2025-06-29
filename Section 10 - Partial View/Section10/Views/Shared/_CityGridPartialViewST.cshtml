@@ -1,0 +1,43 @@
+﻿@model IEnumerable<City>
+
+<table class="city-grid">
+    <thead>
+        <tr>
+            <th>City ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var city in Model)
+            {
+                <tr>
+                    <td>@city.Id</td>
+                    <td>@city.Name</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" style="text-align:center;">No cities available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    .city-grid {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    .city-grid th, .city-grid td {
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+        text-align: left;
+    }
+    .city-grid th {
+        background-color: #f2f2f2;
+    }
+</style>
