@@ -1,5 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers();
+
+//Include XML as Formatter
+builder.Services.AddControllers().AddXmlSerializerFormatters();
 
 var app = builder.Build();
 
