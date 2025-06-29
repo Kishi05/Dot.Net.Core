@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProgramLang>
+
+<table class="component-grid">
+    <thead>
+        <tr>
+            <th>City ID</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var program in Model)
+            {
+                <tr>
+                    <td>@program.ID</td>
+                    <td>@program.Name</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" style="text-align:center;">No Data available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    .component-grid {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+        .component-grid th, .component-grid td {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        .component-grid th {
+            background-color: #f2f2f2;
+        }
+</style>
