@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Section7.Models.IValidationObjectModel;
 using Section7.Models.Validation;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -79,6 +80,22 @@ namespace Section7.Controllers
         /// <returns></returns>
         [Route("scenarios")]
         public IActionResult PlayGround(RegisterPlayGround register)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage);
+                return BadRequest(errors);
+            }
+            return Content(register.ToString());
+        }
+
+        /// <summary>
+        /// This method is used to run With in Class Validation using IValidatableObject
+        /// </summary>
+        /// <param name="register"></param>
+        /// <returns></returns>
+        [Route("validatableObject")]
+        public IActionResult ValidatableObject(RegisterModelInlineValidate register)
         {
             if (!ModelState.IsValid)
             {

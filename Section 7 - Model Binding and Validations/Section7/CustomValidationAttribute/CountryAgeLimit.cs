@@ -3,15 +3,17 @@ using System.Reflection;
 
 namespace Section7.CustomValidationAttribute
 {
-    public class CountryAgeLimit:ValidationAttribute
+    public class CountryAgeLimit : ValidationAttribute
     {
         private string _otherProperty { get; set; }
+
         //Assign Other Field property during construction initialization - [CountryAgeLimit("Country")]
         //Eg: [Compare("password")]
         public CountryAgeLimit(string otherProperty)
         {
             _otherProperty = otherProperty;
         }
+
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
             int age = 0;
@@ -26,7 +28,7 @@ namespace Section7.CustomValidationAttribute
                 {
                     //Get the datatype of the property using Reflection
                     PropertyInfo? propertyInfo = validationContext.ObjectType.GetProperty(_otherProperty);
-                    
+
                     //Get the value from ObjectInstance -> its the object with model data
                     object? otherPropertyValue = propertyInfo?.GetValue(validationContext.ObjectInstance);
 
