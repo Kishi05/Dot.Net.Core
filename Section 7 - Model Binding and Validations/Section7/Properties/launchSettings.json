@@ -12,7 +12,7 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false, // Stop auto browser window open
       "applicationUrl": "http://localhost:5023",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

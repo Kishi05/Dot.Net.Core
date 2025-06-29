@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Section7.Models;
 using Section7.Models.Validation;
 
 namespace Section7.Controllers
@@ -39,6 +40,19 @@ namespace Section7.Controllers
         public IActionResult BindNever([FromBody] BindTest bindTest)
         {
             return Content(bindTest.ToString());
+        }
+
+        [Route("Collection")]
+        public IActionResult CollectionBind(CollectionBinderModel binderModel)
+        {
+            return Json(binderModel);
+        }
+
+        [Route("Header")]
+        public IActionResult HeaderBind([FromHeader(Name ="User-Agent")] string user_Agent)
+        {
+            // Output using PostMan - > PostmanRuntime/7.44.1
+            return Content(user_Agent);
         }
 
     }
