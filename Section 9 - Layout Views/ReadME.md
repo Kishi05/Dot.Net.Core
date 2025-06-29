@@ -19,12 +19,12 @@ This solution demonstrates essential ASP.NET Core MVC concepts related to **view
   ![Login Page Validation](ScreenShots/LoginValidation2.jpg "Login Page Validation Screenshot")
 
 - Upon successful login, user lands on a **Launch Screen (Home)**  
-  ![Launch Screen](ScreenShots/LaunchScreen.png "Launch Screen Screenshot")
+  ![Launch Screen](ScreenShots/LaunchScreen.jpg "Launch Screen Screenshot")
 
 - From Launch Screen, users can navigate to:  
   - **Home (Launch Page)**  
   - **Search Page** featuring a basic data grid (no business logic yet)  
-  ![Search Page](ScreenShots/SearchPage.png "Search Page Screenshot")
+  ![Search Page](ScreenShots/SearchPage.jpg "Search Page Screenshot")
 
 - **Logout** functionality to securely exit the application
 
