@@ -1,0 +1,36 @@
+﻿@model IEnumerable<UserDirectoryViewModel>
+@{
+    ViewData["Title"] = "Search";
+}
+
+<div class="container">
+    <h2 class="text-center mb-1">User Directory</h2>
+
+    <div class="grid-toolbar">
+        <input type="text" id="gridFilter" placeholder="Filter..." class="search-input" />
+    </div>
+
+    <div class="grid-wrapper">
+        <table id="dataGrid">
+            <thead>
+                <tr>
+                    <th data-field="id"># <span class="sort-indicator"></span></th>
+                    <th data-field="name">Name <span class="sort-indicator"></span></th>
+                    <th data-field="email">Email <span class="sort-indicator"></span></th>
+                    <th data-field="role">Role <span class="sort-indicator"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(UserDirectoryViewModel user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

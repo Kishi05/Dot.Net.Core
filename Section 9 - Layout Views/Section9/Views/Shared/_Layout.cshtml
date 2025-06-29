@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    @if (ViewBag.isAuthenticated)
+    {
+        <div class="header">
+            <div class="logo">DotNetCore</div>
+            <nav class="nav">
+                @Html.RouteLink("Home", null, new { controller = "Home", action = "Launch" }, new { @class = "nav-link" })
+                @Html.RouteLink("Search", null, new { controller = "Home", action = "Search" }, new { @class = "nav-link" })
+                @Html.RouteLink("Log Out", null, new { controller = "Home", action = "Index" }, new { @class = "nav-link" })
+            </nav>
+        </div>
+    }
+    <div>
+        @RenderBody()
+    </div>
+    <div class="footer">
+        @RenderSection("footer_section",false)
+    </div>
+</body>
+</html>

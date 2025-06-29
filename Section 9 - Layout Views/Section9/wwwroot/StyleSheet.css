@@ -1,0 +1,369 @@
+﻿/* Generate with help of OpenAI */
+
+/* === Reset & Base Styles === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* === Header === */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a90e2;
+    letter-spacing: 1px;
+}
+
+.nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+    .nav-link:hover {
+        color: #4a90e2;
+        transform: translateY(-1px);
+    }
+
+/* === Main Layout Container === */
+.container {
+    max-width: 600px;
+    margin: 6rem auto 2rem; /* Push content below fixed header */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* === Form Styles === */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+    input:focus,
+    select:focus {
+        outline: none;
+        border-color: #4a90e2;
+    }
+
+button {
+    padding: 0.75rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button:hover {
+        background-color: #357abd;
+    }
+
+/* === Table/Grid === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+th {
+    background-color: #f0f2f5;
+    font-weight: bold;
+}
+
+/* === Utility Classes === */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+/* === Search Form (Grid Style) === */
+.search-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-form button {
+    padding: 0.75rem 1.2rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+    .search-form button:hover {
+        background-color: #357abd;
+    }
+
+/* === Grid Table Adjustments === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+th {
+    background-color: #f0f2f5;
+    font-weight: 600;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f9fbfd;
+}
+
+/* Responsive Table Wrapping (optional) */
+@media (max-width: 768px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background: #fff;
+        padding: 1rem;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+    }
+
+        td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 1rem;
+            font-weight: bold;
+            color: #666;
+        }
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 0;
+        width: 100%;
+    }
+
+    .container {
+        margin: 8rem 1rem 2rem;
+        padding: 1.5rem;
+    }
+}
+
+.grid-toolbar {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.grid-wrapper {
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+#dataGrid {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    #dataGrid th,
+    #dataGrid td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e1e1e1;
+    }
+
+    #dataGrid th {
+        background-color: #f0f2f5;
+        position: sticky;
+        top: 0;
+        cursor: pointer;
+        user-select: none;
+    }
+
+.sort-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    border: 4px solid transparent;
+    border-top-color: #666;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+th.sort-asc .sort-indicator {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+th.sort-desc .sort-indicator {
+    opacity: 1;
+}
+
+tr:hover {
+    background: #f9fbfd;
+}
+
+.user-launch-page .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.user-launch-page .text-center {
+    text-align: center;
+}
+
+.user-launch-page .mt-5 {
+    margin-top: 3rem;
+}
+
+.user-launch-page .btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.user-launch-page .btn-primary {
+    background-color: #4a90e2;
+    color: white;
+}
+
+.user-launch-page .btn-outline-secondary {
+    background-color: white;
+    border: 1px solid #ccc;
+    color: #444;
+}
+
+.user-launch-page .btn:hover {
+    opacity: 0.9;
+}
+
+.footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-top: 4rem;
+}
+
+    .footer p {
+        margin: 0;
+        letter-spacing: 0.3px;
+    }
+
+.login-error {
+    color: red;
+}

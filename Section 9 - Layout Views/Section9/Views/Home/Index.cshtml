@@ -1,0 +1,24 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <h2 class="text-center mb-1">Login</h2>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.Email, new { @type = "email", placeholder = "User ID" })
+        @Html.ValidationMessageFor(m => m.Email, null, new { @class = "login-error" })
+        @Html.TextBoxFor(m => m.Password, new { @type = "password", placeholder = "Password" })
+        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "login-error" })
+
+        <button type="submit" class="btn btn-primary">Log IN</button>
+    }
+
+</div>
+
+@section footer_section {
+    <p>&copy; @DateTime.Now.Year Kishi-DotNetCore App. All rights reserved.</p>
+}
