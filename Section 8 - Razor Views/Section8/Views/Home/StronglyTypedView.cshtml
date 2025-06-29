@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Person>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewData["Title"]</title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1 style="color:coral"> Welcome ! Admin ..</h1>
+    </div>
+    <div style="align-content:center">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Gender</td>
+                <td>Age</td>
+                <td>Eligible</td>
+                <td>Lobby</td>
+            </tr>
+            @foreach (Person person in Model)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.Gender</td>
+                    <td>@person.Age</td>
+                    <td>
+                        @if (person.Age >= 18)
+                        {
+                            <span style="color:green">Eligible</span>
+                            @:user
+                        }
+                        else
+                        {
+                            //Differnt ways of inserting static text
+                            // by enclosing in tag or using '@:'
+                            <span style="color:darkred">In Eligible</span>
+                            @:user
+                        }
+                    </td>
+                    <td>
+                        @switch (person.lobby)
+                        {
+                            case Lobby.VIP:
+                                <span>Suite</span>
+                                break;
+                            case Lobby.General:
+                                <span>General</span>
+                                break;
+                            case Lobby.Waiting:
+                                <span>Waiting Hall</span>
+                                break;
+                            case Lobby.Hold:
+                                <span>On Hold</span>
+                                break;
+                            default:
+                                <span>Need to Check</span>
+                                break;
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
