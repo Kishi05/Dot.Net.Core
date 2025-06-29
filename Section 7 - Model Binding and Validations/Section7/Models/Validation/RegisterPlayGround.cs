@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Section7.CustomValidationAttribute;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Section7.Models.Validation
 {
@@ -17,6 +17,14 @@ namespace Section7.Models.Validation
         [StringLength(50, MinimumLength = 10, ErrorMessage = "{0} should be Mininum {2} to Maximum {1} characters")]
         [MaxLength(50)]
         public string? Address { get; set; }
+
+        [Required]
+        [CountryAgeLimit("Country")]
+        [AgeLimit] /* -> Custom method is being called even if value sent as null and Required flag doesn't stop the flow. 
+                    * Need to handle such scenarios in custom Attribute to maintain default or null values. 
+                    * This happens any order we place the Attribute. 
+                    */
+        public DateTime? DateOfBirth { get; set; }
 
         public string? City { get; set; }
 
