@@ -10,7 +10,7 @@ When multiple sources define the same key, **the last one wins**.
 | Priority | Source | Description |
 |----------|--------|-------------|
 | 1️⃣ | `appsettings.json` | Default/base configuration file |
-| 2️⃣ | `appsettings.{Environment}.json` | Environment-specific overrides (e.g., `appsettings.Development.json`) |
+| 2️⃣ | `appsettings.{Environment}.json` | Environment-specific overrides (e.g., `appsettings.Development.json`) - Development -> Staging -> Production|
 | 3️⃣ | **User Secrets** | Local development secrets (via Secret Manager) |
 | 4️⃣ | **Environment Variables** | Set in OS, CI/CD, Docker, Azure, etc. |
 | 5️⃣ | **Command-line Arguments** | Highest priority (`dotnet run --SettingKey=value`) |
