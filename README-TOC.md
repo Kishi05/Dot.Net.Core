@@ -10,19 +10,18 @@
 
 | Section | Topic | Folder |
 |---------|-------|--------|
-| ✅ 1 | Introduction & Setup | `Section_1_Introduction` |
-| ✅ 2 | First ASP.NET Core Project | `Section_2_FirstApp` |
-| ✅ 3 | Routing Basics | `Section_3_Routing` |
-| ✅ 4 | Controllers & Views | `Section_4_MVCBasics` |
-| ✅ 5 | Razor Pages Overview | `Section_5_RazorPages` |
-| ✅ 6 | Tag Helpers | `Section_6_TagHelpers` |
-| ✅ 7 | Layouts and Partial Views | `Section_7_Layouts` |
-| ✅ 8 | Form Handling | `Section_8_Forms` |
-| ✅ 9 | Model Binding & Validation | `Section_9_ModelBinding` |
-| ✅ 10 | TempData and ViewData | `Section_10_TempData` |
-| ✅ 11 | Dependency Injection | `Section_11_DI` |
-| ✅ 12 | Logging and AppSettings | `Section_12_Logging` |
-| ✅ 13 | Environments and Configuration | `Section_13_Environments` |
+| ✅ 2 |  Getting Started | `Section 02 - Getting Started` |
+| ✅ 3 | HTTP | `Section 03 - HTTP` |
+| ✅ 4 | Middleware | `Section 04 - Middleware` |
+| ✅ 5 | Routing | `Section 05 - Routing` |
+| ✅ 6 | Controllers & IActionResults | `Section 06 - Controllers & IActionResults` |
+| ✅ 7 | Model Binding and Validations | `Section 07 - Model Binding and Validations` |
+| ✅ 8 | Razor Views | `Section 08 - Razor Views` |
+| ✅ 9 | Layout Views | `Section 09 - Layout Views` |
+| ✅ 10 | Partial View | `Section 10 - Partial View` |
+| ✅ 11 | View Components | `Section 11 - View Components` |
+| ✅ 12 | Dependency Injection | `Section 12 - Dependency Injection` |
+| ✅ 13 | Environments | `Section 13 - Environments` |
 | 🔜 14 | (Coming Next...) | `Section_14_...` |
 
 > ✅ Completed | 🔜 In Progress
@@ -31,8 +30,9 @@
 
 ## 🛠️ How to Run a Section
 ```bash
-cd Section_13_Environments
+cd Section 13 - Environments
 dotnet run
+```
 
 ---
 
