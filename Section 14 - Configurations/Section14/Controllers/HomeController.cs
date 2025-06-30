@@ -54,5 +54,21 @@ namespace Section14.Controllers
             return View(appSettings);
         }
 
+        [Route("order")]
+        public IActionResult order()
+        {
+            string Key = _configuration.GetValue<string>("APIToken");
+            ViewData["Key"] = Key;
+            return View();
+        }
+
+        [Route("custom")]
+        public IActionResult custom()
+        {
+            string Key = _configuration.GetValue<string>("Custom:KeySecret");
+            ViewData["Key"] = Key;
+            return View();
+        }
+
     }
 }

@@ -4,9 +4,21 @@ using Section14.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// To Check the Command Line Argument for App Settings -> APIToken ( its not inside a section, use it direct)
+// dotnet run --APIToken="CommandLineArg"
+
+Console.WriteLine("APIToken = " + builder.Configuration["APIToken"]);
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("Config"));
+
+// Custom AppSettings
+builder.Host.ConfigureAppConfiguration((hostingContext, context) =>
+{
+    context.AddJsonFile("CustomAppSettings.json",true,true);
+});
+
 builder.Services.AddSingleton<IConfig, Config>();
 
 var app = builder.Build();
