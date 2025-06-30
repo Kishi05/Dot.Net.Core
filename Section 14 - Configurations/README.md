@@ -53,5 +53,4 @@ dotnet run --AppSettings:ConnectionString="Server=prod;Database=LiveDB"
 
 ---
 
-⚠️ If two sources define the same key, the last one loaded wins.
-It's common to have a setting defined in 3+ places — ensure you're overriding with intent.
+> ⚠️ If two sources define the same key, the last one loaded wins. It's common to have a setting defined in 3+ places — ensure you're overriding with intent.
