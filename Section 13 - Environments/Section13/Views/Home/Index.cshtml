@@ -1,0 +1,11 @@
+﻿@foreach (KeyValuePair<string, string> item in (Dictionary<string, string>)ViewData["Env"])
+{
+    <div>
+        <h6>@item.Key : @item.Value</h6>
+    </div>
+}
+
+@* Usage of Environment in View using Tag Helper *@
+<Environment include="Development">
+    <button type="button">Dev</button>
+</Environment>
