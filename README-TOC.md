@@ -33,3 +33,8 @@
 ```bash
 cd Section_13_Environments
 dotnet run
+
+---
+
+## 📜 License
+This repo is for personal learning and demonstration purposes only.
