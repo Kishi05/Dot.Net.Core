@@ -1,0 +1,163 @@
+﻿@model UserViewModel
+@{
+    if (Model.Id == null)
+    {
+        ViewBag.Title = "Register - NetCoreApp";
+    }
+    else
+    {
+        ViewBag.Title = "Edit - NetCoreApp";
+    }
+}
+
+<header class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <img src="~/favicon.ico" asp-append-version="true"/>
+        <label class="inline-flex items-center px-4 py-2 text-lg sm:text-xl font-semibold tracking-tight">NetCoreApp</label>
+        <a asp-controller="Home" asp-action="Search" class="text-blue-600 hover:text-blue-800">← Back to List</a>
+
+        @* Html Helper from Section 16 - Commented and Kept for reference *@
+        @* @Html.Label("NetCoreApp",null, new { @class = "inline-flex items-center px-4 py-2 text-lg sm:text-xl font-semibold tracking-tight" })
+        @Html.RouteLink("← Back to List", null, new { controller = "Home", action = "Search" }, new { @class = "text-blue-600 hover:text-blue-800" }) *@
+
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 class="text-lg sm:text-xl font-semibold tracking-tight">
+            @if (Model.Id == null)
+            {
+                <label>Register</label>
+
+                @* @Html.Label("Register") *@
+            }
+            else
+            {
+                <label>Edit</label>
+
+                @* @Html.Label("Edit") *@
+            }
+        </h1>
+        <span>
+            @if (TempData.ContainsKey("Success") && TempData["Success"] is bool isSuccess)
+            {
+                @if (isSuccess && !ViewBag.isPost)
+                {
+                    <label class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight">Saved Successfully</label>
+
+                    @* @Html.Label("Saved Successfully", null, new { @class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight" }) *@
+                }
+                else
+                {
+                    <label class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight">Save Not Successful</label>
+
+                    @* @Html.Label("Save Not Successful", null, new { @class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight" }) *@
+                }
+            }
+        </span>
+    </div>
+
+    @* @using (Html.BeginForm("Registration", "Home", FormMethod.Post, new { @class = "bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6" }))
+    { *@
+
+    <form asp-controller="Home" asp-action="Registration" method="post" class="bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6">
+        @if (ViewBag.isPost)
+        {
+            @if (TempData.ContainsKey("Success") && TempData["Success"] is bool isSuccessVal)
+            {
+                @if (!isSuccessVal)
+                {
+                    @Html.ValidationSummary(false, "", new { @class = "mb-6 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 list-disc list-inside" })
+                }
+            }
+        }
+        <div class="grid sm:grid-cols-2 gap-6">
+            <!-- ID (readonly for edit) -->
+            <div>
+
+                <label asp-for="Id" class="block text-sm font-medium text-gray-700">ID</label>
+                <input asp-for="Id" type="number" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly/>
+
+               @*  @Html.LabelFor(m => m.Id, "ID", new { @class = "block text-sm font-medium text-gray-700" })
+                @Html.TextBoxFor(m => m.Id, null, new { @type = "number", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", @readonly = "readonly" }) *@
+
+            </div>
+
+            <!-- Name -->
+            <div>
+
+                <label asp-for="Name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input asp-for="Name" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+
+                @* @Html.LabelFor(m => m.Name, "Name", new { @class = "block text-sm font-medium text-gray-700" })
+                @Html.TextBoxFor(m => m.Name, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
+
+            </div>
+
+            <!-- Location -->
+            <div>
+
+                <label asp-for="Location" class="block text-sm font-medium text-gray-700">Location</label>
+                <input asp-for="Location" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+
+                @* @Html.LabelFor(m => m.Location, "Location", new { @class = "block text-sm font-medium text-gray-700" })
+                @Html.TextBoxFor(m => m.Location, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
+
+            </div>
+
+            <!-- UserID -->
+            <div>
+
+                <label asp-for="Email" class="block text-sm font-medium text-gray-700">Location</label>
+                <input asp-for="Email" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+
+                @* @Html.LabelFor(m => m.Email, "User ID", new { @class = "block text-sm font-medium text-gray-700" })
+                @Html.TextBoxFor(m => m.Email, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
+
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-4">
+
+            @if (TempData.ContainsKey("Success") && TempData["Success"] is bool isSuccessBtn)
+            {
+                @if (isSuccessBtn && !ViewBag.isPost)
+                {
+                    <span class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 bg-gray-100 cursor-not-allowed">
+                        Cancel
+                    </span>
+                    <span class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 bg-gray-100 cursor-not-allowed">
+                        Save
+                    </span>
+                }
+                else
+                {
+                    /* - Html Helper from Section 16 - Commented and Kept for reference
+                    @Html.RouteLink("Cancel", null, new { controller = "Home", action = "Registration" }, new { @class = "inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100" }) */
+
+                    <a asp-controller="Home" asp-action="Registration" asp-route-userID="@Model.Id" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</a>
+                    <button type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Save
+                    </button>
+                }
+
+            }
+            else
+            {
+                /* - Html Helper from Section 16 - Commented and Kept for reference
+                @Html.RouteLink("Cancel", null, new { controller = "Home", action = "Registration" }, new { @class = "inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100" }) */
+
+                <a asp-controller="Home" asp-action="Registration" asp-route-userID="@Model.Id" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</a>
+                <button type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Save
+                </button>
+            }
+
+        </div>
+
+    </form>
+
+    @* } *@
+
+</main>
