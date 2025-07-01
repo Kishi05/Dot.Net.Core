@@ -1,4 +1,4 @@
-# 🗄️ Entity Framework Core Integration – Section 18
+# 🗄️ Entity Framework Core Integration
 
 This module demonstrates how to integrate **Entity Framework Core** using a real SQL Server database. It replaces the in-memory service layer from earlier sections with full database-backed persistence using EF Core.
 
