@@ -1,11 +1,17 @@
 using DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Services.Users.Interface;
+using Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUsers, Users>();
+
 builder.Services.AddDbContext<NetCoreAppDBContext>(
-    options => {
+    options =>
+    {
         options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerLocal"))
         //This is specifically to suppress the Warning occuring as we have dynamic values in our Seed Has Data.
         //Ideal fix is to make those dynamic values static
@@ -14,5 +20,11 @@ builder.Services.AddDbContext<NetCoreAppDBContext>(
     });
 
 var app = builder.Build();
+
+app.UseStaticFiles();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 app.Run();

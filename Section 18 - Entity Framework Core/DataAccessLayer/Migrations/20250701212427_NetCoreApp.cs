@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class NetCoreApp : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,7 @@ namespace DataAccessLayer.Migrations
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    isDummy = table.Column<bool>(type: "bit", nullable: false)
+                    IsProtected = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -31,8 +31,14 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "Id", "CreatedOn", "Email", "Location", "ModifiedOn", "Name", "isDummy" },
-                values: new object[] { 1, new DateTime(2025, 7, 1, 19, 32, 56, 774, DateTimeKind.Utc).AddTicks(1007), "testuser@netcore.com", "UK", new DateTime(2025, 7, 1, 19, 32, 56, 774, DateTimeKind.Utc).AddTicks(1088), "Test User", true });
+                columns: new[] { "Id", "CreatedOn", "Email", "Location", "ModifiedOn", "Name", "IsProtected" },
+                values: new object[] { 1, new DateTime(2025, 7, 1, 21, 24, 27, 136, DateTimeKind.Utc).AddTicks(5572), "testuser@netcore.com", "UK", new DateTime(2025, 7, 1, 21, 24, 27, 136, DateTimeKind.Utc).AddTicks(5674), "Test User", true });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Email",
+                table: "User",
+                column: "Email",
+                unique: true);
         }
 
         /// <inheritdoc />

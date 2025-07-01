@@ -12,13 +12,10 @@
 
 <header class="bg-white shadow-sm sticky top-0 z-10">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
         <img src="~/favicon.ico" asp-append-version="true"/>
         <label class="inline-flex items-center px-4 py-2 text-lg sm:text-xl font-semibold tracking-tight">NetCoreApp</label>
         <a asp-controller="Home" asp-action="Search" class="text-blue-600 hover:text-blue-800">← Back to List</a>
-
-        @* Html Helper from Section 16 - Commented and Kept for reference *@
-        @* @Html.Label("NetCoreApp",null, new { @class = "inline-flex items-center px-4 py-2 text-lg sm:text-xl font-semibold tracking-tight" })
-        @Html.RouteLink("← Back to List", null, new { controller = "Home", action = "Search" }, new { @class = "text-blue-600 hover:text-blue-800" }) *@
 
     </div>
 </header>
@@ -29,14 +26,10 @@
             @if (Model.Id == null)
             {
                 <label>Register</label>
-
-                @* @Html.Label("Register") *@
             }
             else
             {
                 <label>Edit</label>
-
-                @* @Html.Label("Edit") *@
             }
         </h1>
         <span>
@@ -45,21 +38,14 @@
                 @if (isSuccess && !ViewBag.isPost)
                 {
                     <label class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight">Saved Successfully</label>
-
-                    @* @Html.Label("Saved Successfully", null, new { @class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight" }) *@
                 }
                 else
                 {
                     <label class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight">Save Not Successful</label>
-
-                    @* @Html.Label("Save Not Successful", null, new { @class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight" }) *@
                 }
             }
         </span>
     </div>
-
-    @* @using (Html.BeginForm("Registration", "Home", FormMethod.Post, new { @class = "bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6" }))
-    { *@
 
     <form asp-controller="Home" asp-action="Registration" method="post" class="bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6">
         @if (ViewBag.isPost)
@@ -79,9 +65,6 @@
                 <label asp-for="Id" class="block text-sm font-medium text-gray-700">ID</label>
                 <input asp-for="Id" type="number" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly/>
 
-               @*  @Html.LabelFor(m => m.Id, "ID", new { @class = "block text-sm font-medium text-gray-700" })
-                @Html.TextBoxFor(m => m.Id, null, new { @type = "number", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500", @readonly = "readonly" }) *@
-
             </div>
 
             <!-- Name -->
@@ -89,9 +72,6 @@
 
                 <label asp-for="Name" class="block text-sm font-medium text-gray-700">Name</label>
                 <input asp-for="Name" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
-
-                @* @Html.LabelFor(m => m.Name, "Name", new { @class = "block text-sm font-medium text-gray-700" })
-                @Html.TextBoxFor(m => m.Name, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
 
             </div>
 
@@ -101,9 +81,6 @@
                 <label asp-for="Location" class="block text-sm font-medium text-gray-700">Location</label>
                 <input asp-for="Location" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
 
-                @* @Html.LabelFor(m => m.Location, "Location", new { @class = "block text-sm font-medium text-gray-700" })
-                @Html.TextBoxFor(m => m.Location, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
-
             </div>
 
             <!-- UserID -->
@@ -111,9 +88,6 @@
 
                 <label asp-for="Email" class="block text-sm font-medium text-gray-700">Email</label>
                 <input asp-for="Email" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-
-                @* @Html.LabelFor(m => m.Email, "User ID", new { @class = "block text-sm font-medium text-gray-700" })
-                @Html.TextBoxFor(m => m.Email, null, new { @type = "text", @class = "mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" }) *@
 
             </div>
         </div>
@@ -133,9 +107,6 @@
                 }
                 else
                 {
-                    /* - Html Helper from Section 16 - Commented and Kept for reference
-                    @Html.RouteLink("Cancel", null, new { controller = "Home", action = "Registration" }, new { @class = "inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100" }) */
-
                     <a asp-controller="Home" asp-action="Registration" asp-route-userID="@Model.Id" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</a>
                     <button type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Save
@@ -145,9 +116,6 @@
             }
             else
             {
-                /* - Html Helper from Section 16 - Commented and Kept for reference
-                @Html.RouteLink("Cancel", null, new { controller = "Home", action = "Registration" }, new { @class = "inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100" }) */
-
                 <a asp-controller="Home" asp-action="Registration" asp-route-userID="@Model.Id" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</a>
                 <button type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Save
@@ -155,9 +123,5 @@
             }
 
         </div>
-
     </form>
-
-    @* } *@
-
 </main>

@@ -52,9 +52,15 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("isDummy")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsProtected");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("User", (string)null);
 
@@ -62,10 +68,10 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedOn = new DateTime(2025, 7, 1, 19, 32, 56, 774, DateTimeKind.Utc).AddTicks(1007),
+                            CreatedOn = new DateTime(2025, 7, 1, 21, 24, 27, 136, DateTimeKind.Utc).AddTicks(5572),
                             Email = "testuser@netcore.com",
                             Location = "UK",
-                            ModifiedOn = new DateTime(2025, 7, 1, 19, 32, 56, 774, DateTimeKind.Utc).AddTicks(1088),
+                            ModifiedOn = new DateTime(2025, 7, 1, 21, 24, 27, 136, DateTimeKind.Utc).AddTicks(5674),
                             Name = "Test User",
                             isDummy = true
                         });
