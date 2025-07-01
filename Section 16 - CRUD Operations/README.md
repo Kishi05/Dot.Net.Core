@@ -4,6 +4,34 @@ A sample application that demonstrates clean CRUD workflows in **ASP.NET Core MV
 
 ---
 
+## 🖼️ Screen Shots
+
+Search
+![Search Page](ScreenShots/SearchPage.jpg "Search Page Screenshot")
+
+Registration
+![Registration Page](ScreenShots/RegistrationPage.jpg "Registration Page Screenshot")
+
+Validation
+![Validation](ScreenShots/Validation.jpg "Validation Screenshot")
+
+Create
+![Create](ScreenShots/Create.jpg "Create Screenshot")
+
+New User
+![New User](ScreenShots/NewUser.jpg "New User Screenshot")
+
+Read
+![Read](ScreenShots/Read.jpg "Read Screenshot")
+
+Update
+![Update](ScreenShots/Update.jpg "Update Screenshot")
+
+Delete
+![Delete](ScreenShots/Delete.jpg "Delete Screenshot")
+
+---
+
 ## ✨ Key Highlights
 
 * **Instant‑start** – no database, no external dependencies. Clone & run.
