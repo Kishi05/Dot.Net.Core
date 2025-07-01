@@ -58,7 +58,8 @@ A sample application that demonstrates clean CRUD workflows in **ASP.NET Core MV
 2. Ensure `.NET 8 SDK` is installed.
 3. From the solution directory, run:
    ```bash
-   dotnet run```
+   dotnet run
+   ```
 
 ---
 
