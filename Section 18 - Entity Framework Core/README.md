@@ -36,17 +36,33 @@ This module demonstrates how to integrate **Entity Framework Core** using a real
    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.Tools
    ```
+   
 2.  Configure your DbContext in Program.cs:
 	```
 	builder.Services.AddDbContext<NetCoreAppDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 	```
+ 
+	 > ⚠️ **Note:**  
+	> This line is specifically used to suppress the `PendingModelChangesWarning`, which occurs when `HasData()` includes dynamic values like `DateTime.UtcNow` or `Guid.NewGuid()`.
+	>
+	> Ideally, EF Core seed data should use **static values** to ensure consistent and repeatable migrations.
+	>
+	> In this project, we intentionally use dynamic values for `CreatedOn` and `ModifiedOn`, as they are meant to reflect runtime timestamps. To explore and test this behavior, we’ve added the following suppression:
+	>
+	> ```csharp
+	> .ConfigureWarnings(x => x.Ignore(RelationalEventId.PendingModelChangesWarning));
+	> ```
+	>
+	> ⚠️ **Use with caution in production** — this only hides the warning; it does **not** fix the underlying model drift.
+
 3. Add connection string in appsettings.json:
 	``` Dummy
 	"ConnectionStrings": {
 	  "Default": "Server=.;Database=NetCoreAppDB;Trusted_Connection=True;"
 	}
 	```
+ 
 4. Apply migrations and update DB:
 	```
 	Add-Migration Initial
@@ -105,6 +121,5 @@ This module demonstrates how to integrate **Entity Framework Core** using a real
 - Using AsNoTracking() improves performance for read-only queries.
 - DbContext.SaveChanges() populates auto-generated Id values automatically.
 
-### Note:
-- EF Core with Relationships is not implemented.
-- Async is not implemented for now.
+>### ⚠️ Note:
+>- EF Core with Relationships and Async are yet to be integrated.
