@@ -1,0 +1,74 @@
+﻿@model IEnumerable<UserViewModel>
+@{
+
+    ViewBag.Title = "NetCore 8.0";
+}
+<!-- Top bar -->
+<header class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <img src="~/favicon.ico" asp-append-version="true"/>
+        <h1 class="text-lg sm:text-xl font-semibold tracking-tight"><label>NetCoreApp</label></h1>
+        <a asp-controller="Home" asp-action="Registration" class="inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">+ Add New</a>
+
+    </div>
+</header>
+
+<!-- Main content -->
+<main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="overflow-x-auto shadow ring-1 ring-gray-200 sm:rounded-2xl bg-white">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr class="text-sm font-medium text-gray-600">
+                    <th scope="col" class="px-4 py-3 text-left">ID</th>
+                    <th scope="col" class="px-4 py-3 text-left">Name</th>
+                    <th scope="col" class="px-4 py-3 text-left">Location</th>
+                    <th scope="col" class="px-4 py-3 text-left">User ID</th>
+                    <th scope="col" class="px-4 py-3 text-left">Created On</th>
+                    <th scope="col" class="px-4 py-3 text-left">Modified On</th>
+                    <th scope="col" class="px-4 py-3 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-sm">
+                @if(Model != null){
+                @foreach(UserViewModel user in Model)
+                {
+                    <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 whitespace-nowrap font-mono text-xs">@user.Id</td>
+                    <td class="px-4 py-3">@user.Name</td>
+                    <td class="px-4 py-3">@user.Location</td>
+                    <td class="px-4 py-3">@user.Email</td>
+                    <td class="px-4 py-3">@user.CreatedOn</td>
+                    <td class="px-4 py-3">@user.ModifiedOn</td>
+                    <td class="px-4 py-3 text-right space-x-2">
+                            @if (user.isDummy)
+                            {
+                                <span class="inline-flex items-center rounded-lg border border-gray-200 bg-gray-100 text-gray-400 px-2.5 py-1.5 text-xs cursor-not-allowed">
+                                    Edit
+                                </span>
+                                <span class="inline-flex items-center rounded-lg border border-gray-200 bg-gray-100 text-gray-400 px-2.5 py-1.5 text-xs cursor-not-allowed">
+                                    Delete
+                                </span>
+                            }
+                            else
+                            {
+
+                                <a asp-controller="Home" asp-action="Registration" asp-route-userID="@user.Id" class="inline-flex items-center rounded-lg border border-gray-300 px-2.5 py-1.5 text-xs hover:bg-gray-100">Edit</a>
+
+                                <a asp-controller="Home" asp-action="Delete" asp-route-userID="@user.Id" class="inline-flex items-center rounded-lg border border-red-400 text-red-600 px-2.5 py-1.5 text-xs hover:bg-red-50">Delete</a>
+
+                            }
+                    </td>
+                </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 whitespace-nowrap font-mono text-xs text-center" colspan="7">No Records</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</main>
