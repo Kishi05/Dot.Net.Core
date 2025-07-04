@@ -82,6 +82,10 @@ Serilog Seq
 
 ![Serilog Seq](ScreenShots/SerilogSeq.jpg "Serilog Seq")
 
+Serilog Timings
+
+![Serilog Timings](ScreenShots/SerilogTimings.jpg "Serilog Timings")
+
 ---
 
 ## 1. Built‑in Logging
