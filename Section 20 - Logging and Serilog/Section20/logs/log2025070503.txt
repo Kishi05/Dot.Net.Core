@@ -1,0 +1,368 @@
+2025-07-05 03:26:12.182 +05:30 [INF] User profile is available. Using 'C:\Users\kisho\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-05 03:26:12.320 +05:30 [INF] Now listening on: http://localhost:5027
+2025-07-05 03:26:12.363 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-05 03:26:12.365 +05:30 [INF] Hosting environment: Development
+2025-07-05 03:26:12.367 +05:30 [INF] Content root path: D:\Dot.Net.Core\Section 20 - Logging and Serilog\Section20
+2025-07-05 03:26:14.863 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/ - null null
+2025-07-05 03:26:14.980 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+2025-07-05 03:26:14.983 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:26:15.013 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:26:15.126 +05:30 [INF] Index Reached and Redirected to Search Page
+2025-07-05 03:26:15.137 +05:30 [INF] Executing RedirectResult, redirecting to /Home/Search.
+2025-07-05 03:26:15.142 +05:30 [INF] Executed action Section20.Controllers.HomeController.Index (Section20) in 123.1413ms
+2025-07-05 03:26:15.145 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:26:15.146 +05:30 [INF] Response:
+StatusCode: 302
+Location: /Home/Search
+2025-07-05 03:26:15.150 +05:30 [INF] Duration: 169.4601ms
+2025-07-05 03:26:15.162 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/ - 302 0 null 310.5296ms
+2025-07-05 03:26:15.168 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/Home/Search - null null
+2025-07-05 03:26:15.178 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2025-07-05 03:26:15.180 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:26:15.185 +05:30 [INF] Route matched with {action = "Search", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Search() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:26:16.643 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedOn], [u].[Email], [u].[Location], [u].[ModifiedOn], [u].[Name], [u].[IsProtected]
+FROM [User] AS [u]
+2025-07-05 03:26:16.665 +05:30 [INF] Executing ViewResult, running view Search.
+2025-07-05 03:26:16.748 +05:30 [INF] Executed ViewResult - view Search executed in 85.8255ms.
+2025-07-05 03:26:16.751 +05:30 [INF] Executed action Section20.Controllers.HomeController.Search (Section20) in 1563.2891ms
+2025-07-05 03:26:16.753 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:26:16.754 +05:30 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Jul 2025 21:56:16 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+2025-07-05 03:26:16.755 +05:30 [INF] Duration: 1576.9426ms
+2025-07-05 03:26:16.766 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/Home/Search - 200 null text/html; charset=utf-8 1598.4209ms
+2025-07-05 03:26:16.771 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-05 03:26:16.776 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 5.2141ms
+2025-07-05 03:26:16.781 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_vs/browserLink - null null
+2025-07-05 03:26:16.806 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.7022ms
+2025-07-05 03:32:22.701 +05:30 [INF] User profile is available. Using 'C:\Users\kisho\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-05 03:32:22.835 +05:30 [INF] Now listening on: http://localhost:5027
+2025-07-05 03:32:22.877 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-05 03:32:22.880 +05:30 [INF] Hosting environment: Development
+2025-07-05 03:32:22.881 +05:30 [INF] Content root path: D:\Dot.Net.Core\Section 20 - Logging and Serilog\Section20
+2025-07-05 03:32:25.445 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/ - null null
+2025-07-05 03:32:25.553 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+2025-07-05 03:32:25.555 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:32:25.593 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:32:25.694 +05:30 [INF] Index Reached and Redirected to Search Page
+2025-07-05 03:32:25.705 +05:30 [INF] Executing RedirectResult, redirecting to /Home/Search.
+2025-07-05 03:32:25.709 +05:30 [INF] Executed action Section20.Controllers.HomeController.Index (Section20) in 110.0229ms
+2025-07-05 03:32:25.712 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:32:25.715 +05:30 [INF] Response:
+StatusCode: 302
+Location: /Home/Search
+2025-07-05 03:32:25.718 +05:30 [INF] Duration: 166.0677ms
+2025-07-05 03:32:25.735 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/ - 302 0 null 298.1897ms
+2025-07-05 03:32:25.740 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/Home/Search - null null
+2025-07-05 03:32:25.749 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2025-07-05 03:32:25.751 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:32:25.754 +05:30 [INF] Route matched with {action = "Search", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Search() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:32:26.327 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedOn], [u].[Email], [u].[Location], [u].[ModifiedOn], [u].[Name], [u].[IsProtected]
+FROM [User] AS [u]
+2025-07-05 03:32:26.344 +05:30 [INF] Executing ViewResult, running view Search.
+2025-07-05 03:32:26.428 +05:30 [INF] Executed ViewResult - view Search executed in 86.5197ms.
+2025-07-05 03:32:26.431 +05:30 [INF] Executed action Section20.Controllers.HomeController.Search (Section20) in 673.3916ms
+2025-07-05 03:32:26.432 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:32:26.434 +05:30 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Jul 2025 22:02:25 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+2025-07-05 03:32:26.435 +05:30 [INF] Duration: 686.0733ms
+2025-07-05 03:32:26.445 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/Home/Search - 200 null text/html; charset=utf-8 705.8638ms
+2025-07-05 03:32:26.450 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-05 03:32:26.455 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 5.5308ms
+2025-07-05 03:32:26.460 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_vs/browserLink - null null
+2025-07-05 03:32:26.491 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_vs/browserLink - 200 null text/javascript; charset=UTF-8 30.4806ms
+2025-07-05 03:47:27.397 +05:30 [INF] User profile is available. Using 'C:\Users\kisho\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-05 03:47:27.604 +05:30 [INF] Now listening on: http://localhost:5027
+2025-07-05 03:47:27.667 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-05 03:47:27.670 +05:30 [INF] Hosting environment: Development
+2025-07-05 03:47:27.672 +05:30 [INF] Content root path: D:\Dot.Net.Core\Section 20 - Logging and Serilog\Section20
+2025-07-05 03:47:31.052 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/ - null null
+2025-07-05 03:47:31.132 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+2025-07-05 03:47:31.136 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:47:31.186 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:47:31.338 +05:30 [INF] Index Reached and Redirected to Search Page
+2025-07-05 03:47:31.351 +05:30 [INF] Executing RedirectResult, redirecting to /Home/Search.
+2025-07-05 03:47:31.358 +05:30 [INF] Executed action Section20.Controllers.HomeController.Index (Section20) in 164.5174ms
+2025-07-05 03:47:31.361 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:47:31.364 +05:30 [INF] Response:
+StatusCode: 302
+Location: /Home/Search
+2025-07-05 03:47:31.368 +05:30 [INF] Duration: 235.8445ms
+2025-07-05 03:47:31.390 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/ - 302 0 null 347.9353ms
+2025-07-05 03:47:31.396 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/Home/Search - null null
+2025-07-05 03:47:31.407 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2025-07-05 03:47:31.409 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:47:31.412 +05:30 [INF] Route matched with {action = "Search", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Search() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:47:32.116 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedOn], [u].[Email], [u].[Location], [u].[ModifiedOn], [u].[Name], [u].[IsProtected]
+FROM [User] AS [u]
+2025-07-05 03:47:32.149 +05:30 [INF] Executing ViewResult, running view Search.
+2025-07-05 03:47:32.266 +05:30 [INF] Executed ViewResult - view Search executed in 125.9957ms.
+2025-07-05 03:47:32.269 +05:30 [INF] Executed action Section20.Controllers.HomeController.Search (Section20) in 854.7077ms
+2025-07-05 03:47:32.271 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:47:32.273 +05:30 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Jul 2025 22:17:31 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+2025-07-05 03:47:32.275 +05:30 [INF] Duration: 867.5864ms
+2025-07-05 03:47:32.275 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-05 03:47:32.286 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 10.3412ms
+2025-07-05 03:47:32.286 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/Home/Search - 200 null text/html; charset=utf-8 890.5134ms
+2025-07-05 03:47:32.294 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_vs/browserLink - null null
+2025-07-05 03:47:32.340 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.3873ms
+2025-07-05 03:58:01.251 +05:30 [INF] User profile is available. Using 'C:\Users\kisho\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-05 03:58:01.401 +05:30 [INF] Now listening on: http://localhost:5027
+2025-07-05 03:58:01.447 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-05 03:58:01.449 +05:30 [INF] Hosting environment: Development
+2025-07-05 03:58:01.450 +05:30 [INF] Content root path: D:\Dot.Net.Core\Section 20 - Logging and Serilog\Section20
+2025-07-05 03:58:02.868 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/ - null null
+2025-07-05 03:58:02.976 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+2025-07-05 03:58:02.979 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:58:03.017 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:58:03.252 +05:30 [INF] Index Reached and Redirected to Search Page
+2025-07-05 03:58:03.264 +05:30 [INF] Executing RedirectResult, redirecting to /Home/Search.
+2025-07-05 03:58:03.269 +05:30 [INF] Executed action Section20.Controllers.HomeController.Index (Section20) in 245.6912ms
+2025-07-05 03:58:03.272 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Index (Section20)'
+2025-07-05 03:58:03.275 +05:30 [INF] Response:
+StatusCode: 302
+Location: /Home/Search
+2025-07-05 03:58:03.279 +05:30 [INF] Duration: 302.9524ms
+2025-07-05 03:58:03.298 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/ - 302 0 null 439.3705ms
+2025-07-05 03:58:03.306 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/Home/Search - null null
+2025-07-05 03:58:03.318 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+2025-07-05 03:58:03.320 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:58:03.324 +05:30 [INF] Route matched with {action = "Search", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Search() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:58:04.099 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedOn], [u].[Email], [u].[Location], [u].[ModifiedOn], [u].[Name], [u].[IsProtected]
+FROM [User] AS [u]
+2025-07-05 03:58:04.123 +05:30 [INF] Executing ViewResult, running view Search.
+2025-07-05 03:58:04.210 +05:30 [INF] Executed ViewResult - view Search executed in 93.9672ms.
+2025-07-05 03:58:04.213 +05:30 [INF] Executed action Section20.Controllers.HomeController.Search (Section20) in 885.7591ms
+2025-07-05 03:58:04.215 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:58:04.217 +05:30 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Jul 2025 22:28:03 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+2025-07-05 03:58:04.219 +05:30 [INF] Duration: 900.4755ms
+2025-07-05 03:58:04.228 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/Home/Search - 200 null text/html; charset=utf-8 923.0221ms
+2025-07-05 03:58:04.233 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-05 03:58:04.239 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 6.6584ms
+2025-07-05 03:58:04.244 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_vs/browserLink - null null
+2025-07-05 03:58:04.272 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.3868ms
+2025-07-05 03:58:32.496 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/Home/Search - null null
+2025-07-05 03:58:32.503 +05:30 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: http
+PathBase: 
+Path: /Home/Search
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection: keep-alive
+Host: localhost:5027
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cache-Control: max-age=0
+Cookie: [Redacted]
+Upgrade-Insecure-Requests: [Redacted]
+sec-ch-ua: [Redacted]
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+Sec-Fetch-Site: [Redacted]
+Sec-Fetch-Mode: [Redacted]
+Sec-Fetch-User: [Redacted]
+Sec-Fetch-Dest: [Redacted]
+2025-07-05 03:58:32.505 +05:30 [INF] Executing endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:58:32.507 +05:30 [INF] Route matched with {action = "Search", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Search() on controller Section20.Controllers.HomeController (Section20).
+2025-07-05 03:58:32.526 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedOn], [u].[Email], [u].[Location], [u].[ModifiedOn], [u].[Name], [u].[IsProtected]
+FROM [User] AS [u]
+2025-07-05 03:58:32.529 +05:30 [INF] Executing ViewResult, running view Search.
+2025-07-05 03:58:32.534 +05:30 [INF] Executed ViewResult - view Search executed in 5.6554ms.
+2025-07-05 03:58:32.536 +05:30 [INF] Executed action Section20.Controllers.HomeController.Search (Section20) in 26.7748ms
+2025-07-05 03:58:32.538 +05:30 [INF] Executed endpoint 'Section20.Controllers.HomeController.Search (Section20)'
+2025-07-05 03:58:32.539 +05:30 [INF] Response:
+StatusCode: 200
+Content-Type: text/html; charset=utf-8
+Date: Fri, 04 Jul 2025 22:28:31 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+2025-07-05 03:58:32.540 +05:30 [INF] Duration: 37.7513ms
+2025-07-05 03:58:32.542 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/Home/Search - 200 null text/html; charset=utf-8 46.629ms
+2025-07-05 03:58:32.549 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-05 03:58:32.549 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5027/_vs/browserLink - null null
+2025-07-05 03:58:32.553 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 4.0038ms
+2025-07-05 03:58:32.580 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5027/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.6099ms

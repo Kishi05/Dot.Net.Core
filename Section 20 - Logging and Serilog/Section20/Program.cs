@@ -1,37 +1,101 @@
+﻿/*  ─────────────────────────────────────────────────────────────────────────────
+    Program.cs – Section Map & Logging Guide
+    ─────────────────────────────────────────────────────────────────────────────
+    ▸ The Program file is growing as new sections are added.  To keep it readable,
+      code blocks are grouped under #region directives that mirror the course modules
+      completed so far.
+
+    ▸ LOGGING
+        #region Logging
+            #region Built‑in Logging
+              • Console / Debug providers
+              • HTTP request logging (HttpLoggingMiddleware)
+            #endregion
+
+            #region Serilog
+              • Structured logging pipeline
+              • File and console sinks
+            #endregion
+        #endregion
+
+      –  HttpLoggingMiddleware captures HTTP‑protocol details (method, path, headers,
+         status code, body) and routes them through the configured logging providers.
+
+    --------------------------------------------------------------------------- */
+
+
 using DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Users;
 using Services.Users.Interface;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUsers, Users>();
 
-//Configure the logging
-builder.Logging.ClearProviders().AddConsole().AddDebug();
+#region Section 20 - Logging
 
-#region Bulder Log Config 
+#region Type 1 -> Built IN - Bulder Log Config 
 
-//other way to configure Logging
-//builder.Host.ConfigureLogging(loggingProvider =>
+// UnComment either (1) or (2) to enable Built IN Logger Functionality
+
+//                             Logging Configuration
+// ----------------------------------------------------------------------- //
+
+//builder.Logging.ClearProviders().AddConsole().AddDebug(); // UnComment (1)
+
+// other way to configure Logging
+
+//builder.Host.ConfigureLogging(loggingProvider => //UnComment(2)
 //{
 //    loggingProvider.ClearProviders();
 //    loggingProvider.AddConsole();
 //});
 
-#endregion
 
-//Configure Http Logging
+
+//                                  Http Logging
+// ----------------------------------------------------------------------- //
+
+// NOTE: Adjusted from course code (2022) to .NET 8 standard
+// - HttpLoggingFields should be explicitly set - previously it was called internammy when UseHttpLogging() method is called.
+
 builder.Services.AddHttpLogging(_ => {
 
-    //This will log all the properties. Check the Enum for types of properties to log
-    // You can combine multiple seperated with |
-    // eg : _.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestBody | Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.None;
+    // You can combine multiple properties seperated by '|'
 
-    _.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All;
+    // _.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestBody | Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestHeaders;
+
+    // Below line fetch all properties except ResponseBody which is denoted by '~' symbol. Get All and ignore Request Body
+
+    _.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.All & ~Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.ResponseBody;
 });
+
+#endregion
+
+#region Type 2 -> SeriLog
+
+//                              Serilog Configuration
+// ----------------------------------------------------------------------- //
+
+// If LoggerConfiguration only needed
+//Log.Logger = new LoggerConfiguration()
+//    .ReadFrom.Configuration(builder.Configuration).CreateLogger();
+
+builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider services, LoggerConfiguration loggerConfiguration) =>
+{
+    loggerConfiguration.ReadFrom.Configuration(context.Configuration)   //Reads static settings from appsettings.json, appsettings.Development.json, environment variables, etc.
+    .ReadFrom.Services(services);   //Pulls runtime‑registered services (e.g., IHttpContextAccessor, custom enrichers, or DI‑configured sinks) into the Serilog pipeline.
+});
+
+#endregion
+
+#endregion
+
+#region Previous Section - continuation 
 
 builder.Services.AddControllersWithViews();
 
@@ -47,10 +111,14 @@ builder.Services.AddDbContext<NetCoreAppDBContext>(
 
 var app = builder.Build();
 
-// Log Http Calls
+#endregion
+
+app.UseSerilogRequestLogging();
+
+// Section 20 -> Log Http Calls
 app.UseHttpLogging();
 
-#region Logging - Manual
+#region Section 20 - Logging - Manual
 
 //app.Logger.LogDebug("Debug - Message");
 //app.Logger.LogInformation("Information - Message");
@@ -60,6 +128,8 @@ app.UseHttpLogging();
 
 #endregion
 
+#region Previous Section - continuation 
+
 app.UseStaticFiles();
 
 app.MapControllerRoute(
@@ -67,6 +137,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}"
     );
 
-
+#endregion
 
 app.Run();

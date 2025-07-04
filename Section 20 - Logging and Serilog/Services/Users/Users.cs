@@ -5,6 +5,8 @@ using Services.Utilities;
 using Services.DTO;
 using Services.Users.Interface;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using SerilogTimings;
 
 namespace Services.Users
 {
@@ -12,10 +14,12 @@ namespace Services.Users
     {
         private NetCoreAppDBContext _dBContext;
         private ILogger<Users> _logger;
-        public Users(NetCoreAppDBContext dBContext, ILogger<Users> logger)
+        private IDiagnosticContext _diagnosticContext;
+        public Users(NetCoreAppDBContext dBContext, ILogger<Users> logger, IDiagnosticContext diagnosticContext)
         {
             _dBContext = dBContext;
             _logger = logger;
+            _diagnosticContext = diagnosticContext;
         }
         public List<User>? GetUsers()
         {
@@ -34,12 +38,39 @@ namespace Services.Users
         }
         public User? GetUserByID(int? id)
         {
-
             if (!id.HasValue) return null;
-
+            User? result = null;
             try
             {
-                return _dBContext.Users.FirstOrDefault(x => x.Id == id)?.ToDTOEntity();
+                // Serilog Timing to capture code execution Turn Around Time
+                // Cold Start - 1st EF query ~80 ms (model warm‑up + logging I/O). This timing can vary.
+                using (Operation.Time("Timer To Fetch User Details"))
+                {
+                    result = _dBContext.Users.FirstOrDefault(x => x.Id == id)?.ToDTOEntity();
+                }
+
+                //Added Second time to check timings
+                // Warm Path (steady‑state) - 	Subsequent queries ~8 ms (connection + model cached)
+                using (Operation.Time("Timer To Fetch User Details - 2"))
+                {
+                    var s = _dBContext.Users.FirstOrDefault(x => x.Id == id)?.ToDTOEntity();
+                }
+
+                /* 
+                 * -----------------------------------------------------------------
+                 * Record the value as property inside Serilog
+                 * If object is sent, it internally calls ToString() for each Object.
+                 * Inorder to fetch proper details rather than DataType.
+                 * We have created override method for ToString() inside User Class
+                 * ----------------------------------------------------------------- 
+                 */
+
+                if (result != null)
+                {
+                    _diagnosticContext.Set("User", result);
+                }
+
+                return result;
             }
             catch (Exception ex)
             {
