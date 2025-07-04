@@ -63,18 +63,23 @@ This Section covers:
 ### Screen Shots
 
 Debug Level Config
+
 ![Debug Level Config](ScreenShots/DebugConfig.jpg "Debug Level Config")
 
 Console
+
 ![Console](ScreenShots/BuildConsoleLog.jpg "Console")
 
 Debug
+
 ![Debug](ScreenShots/DebugLog.jpg "Debug")
 
 Event Viewer
+
 ![Event Viewer](ScreenShots/EventViewerLog.jpg "Event Viewer")
 
 Serilog Seq
+
 ![Serilog Seq](ScreenShots/SerilogSeq.jpg "Serilog Seq")
 
 ---
