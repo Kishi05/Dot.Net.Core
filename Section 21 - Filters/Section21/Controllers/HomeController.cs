@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Section21.Filters.ActionFilters;
+using Section21.Filters.ResultFilters;
 using Section21.ViewModels;
 
 namespace Section21.Controllers
@@ -18,7 +19,7 @@ namespace Section21.Controllers
                                  */
         [TypeFilter(typeof(HomeActionFilter))] //Handle Query String Example
         [TypeFilter(typeof(FilterArgumentActionFilter), Arguments = new object[] { "x-Filter-Level", "Method"})] //Filter Arguments
-
+        
         public IActionResult Index(int? id)
         {
             Book book = new Book() {
@@ -33,6 +34,7 @@ namespace Section21.Controllers
 
         [HttpPost]
         [TypeFilter(typeof(HomeActionFilter))]  //Handle Object Example
+        [TypeFilter(typeof(HomeResultFilter))]
         public IActionResult Index(Book book)
         {
             string? description = ViewData["Description"]?.ToString();

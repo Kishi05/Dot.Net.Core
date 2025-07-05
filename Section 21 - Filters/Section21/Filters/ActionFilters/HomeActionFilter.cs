@@ -88,7 +88,10 @@ namespace Section21.Filters.ActionFilters
             }
             else
             {
-                context.Result = new BadRequestObjectResult("Model Data is InValid");
+                // Short Circuiting Action Filters
+                // Can also send => new BadRequestObjectResult("Model Data is InValid");
+                context.Result = ((Controller)context.Controller).View(context.ActionArguments["book"]);
+
                 _logger.LogDebug("Serilog - {FilterName}.{MethodName} - Model State is invalid", nameof(HomeActionFilter), nameof(OnActionExecuting));
             }          
         }

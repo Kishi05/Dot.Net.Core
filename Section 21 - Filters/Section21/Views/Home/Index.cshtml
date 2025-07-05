@@ -13,6 +13,8 @@ else
 
 <form asp-controller="Home" asp-action="Index" method="post">
 
+    @Html.ValidationSummary(false)
+
     Book Id <input type="text" asp-for="@Model.BookID"/>
     Name <input type="text" asp-for="@Model.Title" />
     Description <input type="text" asp-for="@Model.Description" />
