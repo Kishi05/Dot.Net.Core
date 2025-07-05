@@ -32,7 +32,7 @@ namespace Section21.Controllers
         [TypeFilter(typeof(OrderFilterAsyncActionFilter), Arguments = new object[] { "x-Filter-Level", "Method", 1 },Order =1)]
         [SkipFilter]
         [OrderActionFilter("x-Key","x-Value")]
-        [FilterFactory("dict-Key","dict-Value")]
+        [AuditFactory("Block")]
         public IActionResult Index(int? id)
         {
             Book book = new Book() {

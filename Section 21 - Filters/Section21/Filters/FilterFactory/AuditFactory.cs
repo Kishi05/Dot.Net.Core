@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Section21.Filters.FilterFactory
 {
-    public class FilterFactory : Attribute, IFilterFactory
+    public class AuditFactory : Attribute, IFilterFactory
     {
         private string _key { get; set; }
-        private string _value { get; set; }
-        public FilterFactory(string key, string value) 
+        public AuditFactory(string key) 
         {
             _key = key;
-            _value = value;
         }
         public bool IsReusable => false;
 
@@ -17,7 +16,6 @@ namespace Section21.Filters.FilterFactory
         {
             HomeArgsFilter? instance = serviceProvider.GetService<HomeArgsFilter>();
             instance.Key = _key;
-            instance.Value = _value;
             return instance;
         }
     }
@@ -29,7 +27,6 @@ namespace Section21.Filters.FilterFactory
             _logger = logger;
         }
         private string _key {  get; set; }
-        private string _value { get; set; }
 
         public string Key
         {
@@ -37,14 +34,15 @@ namespace Section21.Filters.FilterFactory
             set { _key = value; }
         }
 
-        public string Value {
-            get { return _value; }
-            set { _value = value; }
-        }
-
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            _logger.LogInformation("Before : IFactoryFilter - {FileName}.{MethodName}",nameof(HomeArgsFilter), nameof(OnActionExecutionAsync));
+            if (_key.ToUpper() == "BLOCK")
+            {
+                context.Result = new ContentResult { Content = "Blocked", StatusCode = 403 };
+                return;
+            }
+
+            _logger.LogInformation("Before : IFactoryFilter - {FileName}.{MethodName}", nameof(HomeArgsFilter), nameof(OnActionExecutionAsync));
 
             await next();
 
