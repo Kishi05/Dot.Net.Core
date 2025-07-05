@@ -37,7 +37,7 @@ namespace Section21.Controllers
         // Normal Filters and Exception Handler will not catch this error
 
         //[TypeFilter(typeof(HomeResultFilter))]
-        //[SkipFilter] <- This is checked inside Authorization Filter. Un Check to skip Auth check
+        //[SkipFilter] //<- This is checked inside Authorization Filter. Un Check to skip Auth check
 
         #endregion
 
