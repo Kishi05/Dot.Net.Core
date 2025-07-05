@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Section21.Filters.ActionFilters;
+using Section21.Filters.ResourceFilters;
 
 namespace Section21.Filters.ResultFilters
 {
@@ -12,15 +12,15 @@ namespace Section21.Filters.ResultFilters
         }
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
-            _logger.LogInformation("Before - {FilterName}.{MethodName}", nameof(FilterArgumentActionFilter), nameof(OnResultExecutionAsync));
+            _logger.LogInformation("Before - {FilterName}.{MethodName}", nameof(HomeResourceFilter), nameof(OnResultExecutionAsync));
 
             context.HttpContext.Response.Headers["Result-Filter"] = "Reached";
 
+            context.HttpContext.Response.Cookies.Append("Auth-Token", "DU05");
+
             await next();
 
-            _logger.LogInformation("After - {FilterName}.{MethodName}", nameof(FilterArgumentActionFilter), nameof(OnResultExecutionAsync));
-
-
+            _logger.LogInformation("After - {FilterName}.{MethodName}", nameof(HomeResourceFilter), nameof(OnResultExecutionAsync));
         }
     }
 }

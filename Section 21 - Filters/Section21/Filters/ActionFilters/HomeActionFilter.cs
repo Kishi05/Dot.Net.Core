@@ -15,15 +15,25 @@ namespace Section21.Filters.ActionFilters
         public void OnActionExecuted(ActionExecutedContext context)
         {
 
+            #region Exception Filter Testing
+
+            // UnComment this line either in OnExecutin or OnExecuted
+            // ⚠️ ExceptionFilter only catches errors from actions & action filters.
+            // Errors from auth/resource/result filters or missing views won’t be caught here.
+
+            //throw new NotImplementedException();
+
+            #endregion
+
             /* ------------------------------------------------------------------------------------------------------------------------------------*/
 
-                                        /*                          Serilog Structured logging
-                                         * -------------------------------------------------------------------------------
-                                         * Adds these properties {FilterName} , {MethodName} as event properties in serilog.
-                                         * So we can search using FilterName = "HomeActionFilter"
-                                         * Check README for screenshot of how this is used.
-                                         * --------------------------------------------------------------------------------
-                                         */
+            /*                          Serilog Structured logging
+             * -------------------------------------------------------------------------------
+             * Adds these properties {FilterName} , {MethodName} as event properties in serilog.
+             * So we can search using FilterName = "HomeActionFilter"
+             * Check README for screenshot of how this is used.
+             * --------------------------------------------------------------------------------
+             */
 
             _logger.LogDebug("Serilog - {FilterName}.{MethodName} - Action Filter Executed", nameof(HomeActionFilter), nameof(OnActionExecuted));
 
@@ -49,6 +59,17 @@ namespace Section21.Filters.ActionFilters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
+
+            #region Exception Filter Testing
+
+            // UnComment this line either in OnExecutin or OnExecuted
+            // ⚠️ ExceptionFilter only catches errors from actions & action filters.
+            // Errors from auth/resource/result filters or missing views won’t be caught here.
+
+            //throw new NotImplementedException();
+
+            #endregion
+
             /*
              * This Method will be invoked before Home -> Index Action Method bring hit.
              * This handles two type of input data => Query String and Post Object
