@@ -9,18 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton(provider =>
 {
     var logger = provider.GetRequiredService<ILogger<FilterArgumentActionFilter>>();
-    return new FilterArgumentActionFilter(logger, "x-Filter-Level", "Global");
+return new FilterArgumentActionFilter(logger, "x-Filter-Level", "Global");
 });
 
 #endregion
 
-#region FilterArgumentActionFilter
+#region IOrderedFilterAsync
 
-// Creates a singleton Object which builds and registers the filter once
 builder.Services.AddSingleton(provider =>
 {
-    var logger = provider.GetRequiredService<ILogger<OrderActionFilter>>();
-    return new OrderActionFilter(logger, "x-Filter-Level", "Global", 2);
+    var logger = provider.GetRequiredService<ILogger<OrderFilterAsyncActionFilter>>();
+    return new OrderFilterAsyncActionFilter(logger, "x-Filter-Level", "Global", 2);
 });
 
 #endregion
@@ -41,8 +40,9 @@ builder.Services.AddControllersWithViews(options =>
 
     // Injecting Filter Services to Filters
 
-    //options.Filters.AddService<FilterArgumentActionFilter>();
-    options.Filters.AddService<OrderActionFilter>(2);
+    options.Filters.AddService<FilterArgumentActionFilter>();
+
+    options.Filters.AddService<OrderFilterAsyncActionFilter>(2);
 
 });
 
@@ -58,7 +58,7 @@ app.UseSerilogRequestLogging();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Order}/{action=Index}/{id?}"
+    pattern: "{controller=Home}/{action=Index}/{id?}"
     );
 
 app.Run();

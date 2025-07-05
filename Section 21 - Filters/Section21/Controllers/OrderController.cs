@@ -21,13 +21,9 @@ namespace Section21.Controllers
 
 
     [TypeFilter(typeof(FilterArgumentActionFilter), Arguments = new object[] { "x-Filter-Level", "Class" },Order = 3)] // Class Level Filter
-
-    //[TypeFilter(typeof(OrderActionFilter), Arguments = new object[] { "x-Filter-Level", "Class", 3})]  //Using Iordered Interface to handle order as argument type
     public class OrderController : Controller
     {
         [TypeFilter(typeof(FilterArgumentActionFilter), Arguments = new object[] { "x-Filter-Level", "Method"}, Order = -1)] // Method Level
-
-        //[TypeFilter(typeof(OrderActionFilter), Arguments = new object[] { "x-Filter-Level", "Method", -1 }]
         public IActionResult Index(int? id)
         {
             Book book = new Book() {
