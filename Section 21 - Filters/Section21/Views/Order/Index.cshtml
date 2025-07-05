@@ -1,0 +1,23 @@
+﻿@using Section21.ViewModels
+@model Book
+
+@if (ViewData["Title"] == null)
+{
+    <h2>Hello World !</h2>
+}
+else
+{
+    <h2>@ViewData["Title"]</h2>
+    <h2>@ViewData["BookObj"]</h2>
+}
+
+<form asp-controller="Home" asp-action="Index" method="post">
+
+    Book Id <input type="text" asp-for="@Model.BookID"/>
+    Name <input type="text" asp-for="@Model.Title" />
+    Description <input type="text" asp-for="@Model.Description" />
+    Author <input type="text" asp-for="@Model.Author"  />
+    Price <input type="text" asp-for="@Model.price" />
+
+    <button type="submit">Start Filter Flow</button>
+</form>
