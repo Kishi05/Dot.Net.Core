@@ -8,9 +8,9 @@ This section explores the complete filter pipeline in ASP.NET Core MVC — inclu
 
 ## Filter LIfecycle
 
-┌────────────────────────────────────────────────────┐
-│                HTTP Request Enters                 │
-└────────────────────────────────────────────────────┘
+       ┌───────────── Authorization Filter ──────────┐
+       │   (Optional) Short-circuits if unauthorized │
+       └─────────────────────────────────────────────┘
                         │
                         ▼
        ┌───────────── Authorization Filter ──────────┐
@@ -24,8 +24,9 @@ This section explores the complete filter pipeline in ASP.NET Core MVC — inclu
                         │
                         ▼
         ┌───────── Model Binding & Validation ─────┐
-        │   Forms route data into parameters       │
+        │   Forms route data into parameters       │        
         └──────────────────────────────────────────┘
+        
                         │
                         ▼
       ┌──────────── Action Filters (Before) ───────┐
@@ -73,19 +74,32 @@ This section explores the complete filter pipeline in ASP.NET Core MVC — inclu
 
 ## Visual Pipeline (simplified)
 
-app.UseRouting()
-┌───────────────── ① Your “Outer” Middleware (Logging) ────────────────┐
-│  ┌────────────── ② Authentication Middleware ──────────────────────┐ │
-│  │  ┌─────────── ③ Custom Middleware (e.g., Tenant) ─────────────┐ │ │
-│  │  │            …                                                │ │ │
-│  │  │  ┌─────── MVC Endpoint ────────┐                            │ │ │
-│  │  │  │  Resource  →  Action →  Result → Exception Filters       │ │ │
-│  │  │  └──────────────────────────────┘                            │ │ │
-│  │  └──────────────────────────────────────────────────────────────┘ │ │
-│  └───────────────────────────────────────────────────────────────────┘ │
-└────────────────────────────────────────────────────────────────────────┘
-
-
+```
+app.UseRouting();
+│
+├── ① Logging Middleware
+│     (Global logging, timing, correlation ID, etc.)
+│
+├── ② Authentication Middleware
+│     (e.g., JWT bearer, cookie-based — sets HttpContext.User)
+│
+├── ③ Custom Middleware (e.g., Tenant Resolution)
+│     (Reads headers, query strings, etc.)
+│
+└── MVC Endpoint Triggered
+       ↓       
+       ┌───────────────────────────────────────────┐       
+       │         MVC Filter Pipeline               │       
+       │                                           │
+       │   - Authorization Filters                 │       
+       │   - Resource Filters                      │       
+       │   - Action Filters                        │       
+       │   - Controller Method Executes            │       
+       │   - Result Filters                        │       
+       │   - Exception Filters                     │       
+       └───────────────────────────────────────────┘
+       
+```
 
 ---
 
