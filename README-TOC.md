@@ -22,7 +22,16 @@
 | ✅ 11 | View Components | `Section 11 - View Components` |
 | ✅ 12 | Dependency Injection | `Section 12 - Dependency Injection` |
 | ✅ 13 | Environments | `Section 13 - Environments` |
-| 🔜 14 | (Coming Next...) | `Section_14_...` |
+| ✅ 14 | Environments | `Section 14 - Configurations` |
+| ✅ 15 | Environments | `Section 15 - [-Not Yet-]` |
+| ✅ 16 | Environments | `Section 16 - CRUD Operations` |
+| ✅ 17 | Environments | `Section 17 - Tag Helpers` |
+| ✅ 18 | Environments | `Section 18 - Entity Framework Core` |
+| ✅ 19 | Environments | `Section 19 - [-Not Yet-]` |
+| ✅ 20 | Environments | `Section 20 - Logging and Serilog` |
+| ✅ 21 | Environments | `Section 21 - Filters` |
+| ✅ 22 | Environments | `Section 22 - Error Handling` |
+| 🔜 23 | (Coming Next...) | `Section_23_...` |
 
 > ✅ Completed | 🔜 In Progress
 
