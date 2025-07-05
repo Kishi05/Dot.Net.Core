@@ -1,5 +1,6 @@
 using Section21.Filters.ActionFilters;
 using Section21.Filters.AuthorizationFilter;
+using Section21.Filters.FilterFactory;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,6 +49,8 @@ builder.Services.AddControllersWithViews(options =>
 });
 
 builder.Services.AddTransient<HomeAuthorizationFilter>();
+
+builder.Services.AddTransient<HomeArgsFilter>();
 
 builder.Host.UseSerilog((HostBuilderContext context,IServiceProvider services,LoggerConfiguration logConfig) =>
 {

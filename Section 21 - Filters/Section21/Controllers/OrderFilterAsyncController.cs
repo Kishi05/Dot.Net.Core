@@ -2,6 +2,7 @@
 using Section21.Filters.ActionFilters;
 using Section21.Filters.AttributeActionFilter;
 using Section21.Filters.AuthorizationFilter;
+using Section21.Filters.FilterFactory;
 using Section21.Filters.OverrideDummyFilter;
 using Section21.ViewModels;
 using System.Xml.Serialization;
@@ -31,6 +32,7 @@ namespace Section21.Controllers
         [TypeFilter(typeof(OrderFilterAsyncActionFilter), Arguments = new object[] { "x-Filter-Level", "Method", 1 },Order =1)]
         [SkipFilter]
         [OrderActionFilter("x-Key","x-Value")]
+        [FilterFactory("dict-Key","dict-Value")]
         public IActionResult Index(int? id)
         {
             Book book = new Book() {
