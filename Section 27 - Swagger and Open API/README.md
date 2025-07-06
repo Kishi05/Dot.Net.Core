@@ -13,7 +13,7 @@
 
 ### 1. Add NuGet packages
 ```bash
-dotnet add package Swashbuckle.AspNetCore --version 7.0.14
+dotnet add package Swashbuckle.AspNetCore
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
 ```
