@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Section28.DataAccess\Section28.DataAccess.csproj" />
+    <ProjectReference Include="..\Section28.DTO\Section28.DTO.csproj" />
+  </ItemGroup>
+
+</Project>

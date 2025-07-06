@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Section28</name>
+    </assembly>
+    <members>
+        <member name="M:Section28.Controllers.UserController.GetUsers">
+            <summary>
+            Get All Users
+            </summary>
+            <returns>List DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.UserController.GetUsersByID(System.Guid)">
+            <summary>
+            Get User based on ID
+            </summary>
+            <param name="userID"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.UserController.CreateUsers(Section28.DTO.User)">
+            <summary>
+            Create a new user
+            </summary>
+            <param name="newUser"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.UserController.UpdateUsers(System.Guid,Section28.DTO.User)">
+            <summary>
+            Update User Details
+            </summary>
+            <param name="userID"></param>
+            <param name="updateUser"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.UserController.DeleteUser(System.Guid)">
+            <summary>
+            Delete User based on ID
+            </summary>
+            <param name="userID"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Section28.Controllers.v1.UserVersionController.GetUsers">
+            <summary>
+            Get All Users
+            </summary>
+            <returns>List DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.v1.UserVersionController.GetUsersByID(System.Guid)">
+            <summary>
+            Get User based on ID
+            </summary>
+            <param name="userID"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.v1.UserVersionController.CreateUsers(Section28.DTO.User)">
+            <summary>
+            Create a new user
+            </summary>
+            <param name="newUser"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.v1.UserVersionController.UpdateUsers(System.Guid,Section28.DTO.User)">
+            <summary>
+            Update User Details
+            </summary>
+            <param name="userID"></param>
+            <param name="updateUser"></param>
+            <returns>DTO.User?</returns>
+        </member>
+        <member name="M:Section28.Controllers.v1.UserVersionController.DeleteUser(System.Guid)">
+            <summary>
+            Delete User based on ID
+            </summary>
+            <param name="userID"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Section28.Controllers.v2.UserVersionController.GetUsers">
+            <summary>
+            Get All Users
+            </summary>
+            <returns>List DTO.User?</returns>
+        </member>
+    </members>
+</doc>
