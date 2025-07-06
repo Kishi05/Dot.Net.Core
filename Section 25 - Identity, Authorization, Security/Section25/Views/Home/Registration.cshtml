@@ -1,0 +1,117 @@
+﻿@model UserViewModel
+@{
+    ViewBag.Title = "Register - NetCoreApp";
+}
+
+<header class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <img src="~/favicon.ico" asp-append-version="true"/>
+        <label class="inline-flex items-center px-4 py-2 text-lg sm:text-xl font-semibold tracking-tight">NetCoreApp</label>
+    </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 class="text-lg sm:text-xl font-semibold tracking-tight">
+            <label>Register</label>
+        </h1>
+        <span>
+            @if (TempData.ContainsKey("Success") && TempData["Success"] is bool isSuccess)
+            {
+                @if (isSuccess && !ViewBag.isPost)
+                {
+                    <label class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight">Saved Successfully</label>
+
+                }
+                else
+                {
+                    <label class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight">Save Not Successful</label>
+
+                }
+            }
+        </span>
+    </div>
+
+
+    <form asp-controller="Home" asp-action="Registration" method="post" class="bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6">
+        
+        @Html.ValidationSummary(false, "", new { @class = "mb-6 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 list-disc list-inside" })
+
+        <div class="grid sm:grid-cols-2 gap-6">
+         
+            <div>
+
+                <label asp-for="Id" class="block text-sm font-medium text-gray-700">ID</label>
+                <input asp-for="Id" type="number" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly/>
+
+
+            </div>
+
+            <!-- Name -->
+            <div>
+
+                <label asp-for="Name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input asp-for="Name" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+
+
+            </div>
+
+            <!-- Phone -->
+            <div>
+
+                <label asp-for="Phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input asp-for="Phone" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+
+            </div>
+
+            <!-- UserID -->
+            <div>
+
+                <label asp-for="Email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input asp-for="Email" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                @Html.ValidationMessageFor(_ => _.Email)
+            </div>
+
+            <!-- Password -->
+            <div>
+
+                <label asp-for="Password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input asp-for="Password" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+
+                <label asp-for="ConfirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input asp-for="ConfirmPassword" type="text" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+
+            </div>
+
+               <!-- Confirm Password -->
+            <div class="text-center align-center">
+                <span>
+                <input asp-for="Role" type="radio" value="@AdminEnum.Admin" " />
+                <label asp-for="Role" class=" text-sm font-medium text-gray-700">@AdminEnum.Admin.ToString()</label>
+            </span>          
+            <span>
+                <input asp-for="Role" type="radio" value="@AdminEnum.User"  />
+                <label asp-for="Role" class=" text-sm font-medium text-gray-700">@AdminEnum.User.ToString()</label>
+            </span>
+
+            </div>
+
+        </div>
+
+        <div class="flex justify-end gap-4">
+
+            <button class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</button>
+            <button type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Save
+            </button>
+
+        </div>
+
+    </form>
+
+</main>
