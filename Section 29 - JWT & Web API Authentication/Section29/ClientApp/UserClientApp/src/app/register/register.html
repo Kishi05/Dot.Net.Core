@@ -1,0 +1,79 @@
+<main class="max-w-4xl mx-auto px-4 py-10">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+        <h1 class="text-lg sm:text-xl font-semibold tracking-tight">
+            <label>Register</label>
+        </h1>
+        <span>
+            <label *ngIf = (isRegisterFormSubmitted&&isSuccess) class="inline-flex items-center px-4 py-2 text-sm text-green-800 font-medium tracking-tight">Saved Successfully</label>
+            <label *ngIf = (isRegisterFormSubmitted&&isFailed) class="inline-flex items-center px-4 py-2 text-sm text-red-800 font-medium tracking-tight">Save Not Successful</label>
+        </span>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit) = "registerSubmitted()" class="bg-white p-8 shadow ring-1 ring-gray-200 sm:rounded-2xl space-y-6">
+
+        <div class="grid sm:grid-cols-2 gap-6">
+
+            <!-- Name -->
+            <div>
+
+                <label class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" formControlName="PersonName" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+                <span class="text-red-800" *ngIf="((register_PersonName.touched || isRegisterFormSubmitted) && (register_PersonName.errors?.['required']))">Person Name is Required</span>
+            </div>
+            
+            <!-- Phone Number -->
+            <div>
+
+                <label class="block text-sm font-medium text-gray-700">Phone Number</label>
+                <input type="text" formControlName="Phone" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"/>
+                <span class="text-red-800" *ngIf="((register_Phone.touched || isRegisterFormSubmitted) && (register_Phone.errors?.['required']))">Phone Number is Required</span>
+
+            </div>
+
+            <!-- UserID -->
+            <div>
+
+                <label class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="text" formControlName="Email" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                <span class="text-red-800" *ngIf="((register_Email.touched || isRegisterFormSubmitted) && (register_Email.errors?.['required']))">Email is Required</span>
+
+            </div>
+
+            <div>
+
+            </div>
+
+            <!-- Password -->
+            <div>
+
+                <label class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" formControlName="Password" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                <span class="text-red-800" *ngIf="((register_Password.touched || isRegisterFormSubmitted) && (register_Password.errors?.['required']))">Password is Required</span>
+            </div>
+
+            <!-- Confirm Password -->
+            <div>
+
+                <label class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" formControlName="ConfirmPassword" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
+                <span class="text-red-800" *ngIf="((register_ConfirmPassword.touched || isRegisterFormSubmitted) && (register_ConfirmPassword.errors?.['required']))">Confirm Password is Required</span>
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-4">
+            <span *ngIf="(isRegisterFormSubmitted&&isSuccess)" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 bg-gray-100 cursor-not-allowed">
+                Cancel
+            </span>
+            <span *ngIf="(isRegisterFormSubmitted&&isSuccess)" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 bg-gray-100 cursor-not-allowed">
+                Save
+            </span>
+            
+            <button type="button" *ngIf="!(isRegisterFormSubmitted&&isSuccess)" class="inline-flex items-center rounded-xl border border-gray-300 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-100">Cancel</button>
+            <button type="submit" *ngIf="!(isRegisterFormSubmitted&&isSuccess)" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-white shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Save
+            </button>
+
+        </div>
+
+    </form>
+
+</main>

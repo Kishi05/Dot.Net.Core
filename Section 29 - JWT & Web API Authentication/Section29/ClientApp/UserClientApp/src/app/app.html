@@ -1,0 +1,12 @@
+<header class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <span><a routerLink="/"><img src="favicon.ico" width="30" height="30"/></a></span>
+        <h1 class="text-lg sm:text-xl font-emibold tracking-tight"><label>NetCoreApp</label></h1>
+
+        <a routerLink="/register" *ngIf="!router.url.startsWith('/register') && !router.url.startsWith('/main')">Register</a>
+        <a routerLink="/login" *ngIf="!router.url.startsWith('/login') && !router.url.startsWith('/main')" class="text-blue-600 hover:text-blue-800">Login</a>
+        <a href="#" (click)="logOut($event)" *ngIf="router.url.startsWith('/main')" class="text-blue-600 hover:text-blue-800">Log Out</a>
+    </div>
+</header>
+
+<router-outlet />
