@@ -1,0 +1,34 @@
+
+<!-- Main content -->
+<main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="overflow-x-auto shadow ring-1 ring-gray-200 sm:rounded-2xl bg-white">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr class="text-sm font-medium text-gray-600">
+                    <th scope="col" class="px-4 py-3 text-left">Name</th>
+                    <th scope="col" class="px-4 py-3 text-left">Location</th>
+                    <th scope="col" class="px-4 py-3 text-left">User ID</th>
+                    <th scope="col" class="px-4 py-3 text-left">Created On</th>
+                    <th scope="col" class="px-4 py-3 text-left">Modified On</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 text-sm">
+                <ng-container *ngIf="users.length > 0; else emptyRow">
+                        <tr class="hover:bg-gray-50" *ngFor="let user of users">
+                            <td class="px-4 py-3">{{user.name}}</td>
+                            <td class="px-4 py-3">{{user.country}}</td>
+                            <td class="px-4 py-3">{{user.email}}</td>
+                            <td class="px-4 py-3">{{user.createdOn}}</td>
+                            <td class="px-4 py-3">{{user.modifiedOn}}</td>
+                        </tr>
+                      </ng-container>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<ng-template #emptyRow>
+    <tr class="hover:bg-gray-50 text-center" >
+        <td colspan="7">No Data</td>
+    </tr>
+</ng-template>

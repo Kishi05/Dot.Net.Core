@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -32,5 +32,14 @@ export class UserAccountService {
   public LogOut():Observable<any>{
     return this.httpClient.post<any>(`${API_BASE_URL}/Logout`,{});
   };
+
+    public getApiUsers(): Observable<any> {
+      const jwt = localStorage.getItem('token'); 
+      let headers = new HttpHeaders();
+      if(jwt){
+        headers = headers.append("Authorization",`Bearer ${localStorage['token']}`);
+      }
+      return this.httpClient.get(`${API_BASE_URL}/UserList`,{headers : headers});
+  }
 
 }

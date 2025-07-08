@@ -17,12 +17,18 @@ export class App {
       event.preventDefault(); 
             this.userAccountService.LogOut().subscribe({
               next: (response : any) => {
+                localStorage.removeItem("token");
                 this.router.navigate(['/login']);
             },
             error: (error : any) =>{
               console.log(error);
             }
           });
+  }
+
+  Search(event: Event){
+    event.preventDefault(); 
+    this.router.navigate(['/search']);
   }
 
 }
