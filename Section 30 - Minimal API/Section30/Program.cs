@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Section30;
+using Section30.Endpoint_filter;
 using Section30.RouteGroups;
-using System.Security.Cryptography.Xml;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -134,6 +134,89 @@ app.MapGet("/IResult/user/{id:int}", async (HttpContext context, int id) =>
     if (user is null)
         return Results.BadRequest(new {message = "Invalid ID"}); // Specific Return Methods
     return Results.Ok(user);
+});
+
+#endregion
+
+#region END Point
+
+app.MapPost("/endpoint/users", async (HttpContext context, [FromBody] User? user) =>
+{
+
+    if (user is null)
+    {
+        context.Response.StatusCode = 400;
+        await context.Response.WriteAsync("Invalid User Details");
+        return;
+    }
+    userList.Add(user);
+    string result = string.Join("\n", userList.Select(x => x.ToString()));
+    await context.Response.WriteAsync(result);
+
+}).AddEndpointFilter(async (EndpointFilterInvocationContext context, EndpointFilterDelegate next) =>
+{
+    var user = context.Arguments.OfType<User>().FirstOrDefault();
+    if (user is null)
+        return Results.BadRequest("User Object should not be NULL");
+
+    ValidationContext? validate = new ValidationContext(user);
+    List<ValidationResult> validationResults = new List<ValidationResult>();
+    bool isValid = Validator.TryValidateObject(user,validate,validationResults,true);
+
+    if (!isValid)
+    {
+        return Results.BadRequest(validationResults.FirstOrDefault()?.ErrorMessage);
+    }
+
+
+    var result = await next(context);
+
+
+    return result;
+});
+
+#endregion
+
+#region IENDPoint
+
+app.MapPost("/endpoint/multi/users", async (HttpContext context, [FromBody] User? user) =>
+{
+    //Hits Third
+
+    if (user is null)
+    {
+        context.Response.StatusCode = 400;
+        await context.Response.WriteAsync("Invalid User Details");
+        return;
+    }
+    userList.Add(user);
+    string result = string.Join("\n", userList.Select(x => x.ToString()));
+    await context.Response.WriteAsync(result);
+
+}).AddEndpointFilter<CustomEndPoint>()
+.AddEndpointFilter(async (EndpointFilterInvocationContext context, EndpointFilterDelegate next) =>
+{
+    //Hits Second
+
+    var user = context.Arguments.OfType<User>().FirstOrDefault();
+    if (user is null)
+        return Results.BadRequest("User Object should not be NULL");
+
+    ValidationContext? validate = new ValidationContext(user);
+    List<ValidationResult> validationResults = new List<ValidationResult>();
+    bool isValid = Validator.TryValidateObject(user, validate, validationResults, true);
+
+    if (!isValid)
+    {
+        return Results.BadRequest(validationResults.FirstOrDefault()?.ErrorMessage);
+    }
+
+
+    var result = await next(context);
+
+    //Hits Fourth
+
+    return result;
 });
 
 #endregion
