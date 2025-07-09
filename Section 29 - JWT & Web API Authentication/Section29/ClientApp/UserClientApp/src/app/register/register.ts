@@ -50,7 +50,9 @@ export class Register {
         this.isRegisterFormSubmitted = true;
 
         this.userAccountService.Register(this.registerForm.value).subscribe({
-          next: (response: RegisterUser) => {
+          next: (response: any) => {
+            localStorage["token"] = response.token
+            localStorage["refreshToken"] = response.refreshToken
             this.isSuccess = true;
             this.isFailed = false;
         },

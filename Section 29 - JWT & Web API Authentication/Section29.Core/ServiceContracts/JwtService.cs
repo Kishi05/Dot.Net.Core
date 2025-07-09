@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,9 +62,24 @@ namespace Section29.Core.ServiceContracts
                 Email = user.Email,
                 PersonName = user.PersonName,
                 Expiration = expirationTime,
-                Token = token
+                Token = token,
+                RefreshToken = GenerateRefreshToken(),
+                RefreshTokenExpiration = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["RefreshToken:EXPIRATION_MINUTES"]))
             };
 
         }
+
+        /// <summary>
+        /// Creates Refresh Token (Base 64 string using RandomNumberGenerator)
+        /// </summary>
+        /// <returns></returns>
+        private string GenerateRefreshToken()
+        {
+            Byte[] bytes = new byte[64];
+            var randomNumberGenerator = RandomNumberGenerator.Create();
+            randomNumberGenerator.GetBytes(bytes);
+            return Convert.ToBase64String(bytes);
+        }
+
     }
 }

@@ -18,6 +18,7 @@ export class App {
             this.userAccountService.LogOut().subscribe({
               next: (response : any) => {
                 localStorage.removeItem("token");
+                localStorage.removeItem("refreshToken");
                 this.router.navigate(['/login']);
             },
             error: (error : any) =>{

@@ -39,6 +39,7 @@ export class Login {
         next: (response: any) => {
           this.userAccountService.userSet(response.personName);
           localStorage["token"] = response.token
+          localStorage["refreshToken"] = response.refreshToken
           this.router.navigate(['/main']);
           this.isSuccess = true;
           this.isFailed = false;

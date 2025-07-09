@@ -79,6 +79,12 @@ namespace Section29.Controllers
             if (result.Succeeded)
             {
                 var authResponse = _jwtService.CreateJWTToken(user);
+
+                user.RefreshToken = authResponse.RefreshToken;
+                user.RefreshTokenExpiration = authResponse.RefreshTokenExpiration;
+
+                await _userManager.UpdateAsync(user);
+
                 return Ok(authResponse);
             }
 
