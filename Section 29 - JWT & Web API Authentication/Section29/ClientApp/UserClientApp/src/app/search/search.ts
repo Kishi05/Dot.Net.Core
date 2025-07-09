@@ -21,4 +21,19 @@ export class Search {
     });
   }
 
+  refreshButton($event: any): void{
+    this.userService.postGenerateNewToken().subscribe({
+      next: (response: any) => {
+        //Strore token to local storage
+        localStorage.removeItem("token");
+        localStorage.removeItem("refreshToken");
+        
+        localStorage["refreshToken"] = response.refreshToken
+        localStorage["token"] = response.token
+      },
+      error: (error: any) =>{
+
+      }
+    });
+  }
 }

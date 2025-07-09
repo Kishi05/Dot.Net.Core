@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Section29.Core.DTO;
 using Section29.Core.Entities;
 using Section29.Core.Identity;
 using Section29.Core.ServiceContracts.Interface;
+using System.Security.Claims;
 
 namespace Section29.Controllers
 {
@@ -129,6 +131,51 @@ namespace Section29.Controllers
                 }
             };
             return list;
+        }
+
+        /// <summary>
+        /// Generate New Token Based on Refresh Token
+        /// </summary>
+        /// <param name="newTokenDTO"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("generate-new-jwt")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GenerateNewToken(NewTokenDTO newTokenDTO)
+        {
+            if (newTokenDTO is null)
+                return BadRequest("Invalid request");
+
+            //Decouples JWT and fetches All Claims
+            ClaimsPrincipal? claimsPrincipal = _jwtService.GetPrincipleFromJwtToken(newTokenDTO.Token);
+
+            if(claimsPrincipal is null) return BadRequest("Invalid JWT Token");
+
+            string? email = claimsPrincipal.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if(email is not null)
+            {
+                ApplicationUser? user = await _userManager.FindByEmailAsync(email);
+
+                if (user != null && user.RefreshToken != null && user.RefreshToken.Equals(newTokenDTO.RefreshToken) && user.RefreshTokenExpiration > DateTime.UtcNow)
+                {
+                    AuthenticationResponse newJwt = _jwtService.CreateJWTToken(user);
+
+                    user.RefreshToken = newJwt.RefreshToken;
+                    user.RefreshTokenExpiration = newJwt.RefreshTokenExpiration;
+
+                    await _userManager.UpdateAsync(user);
+
+                    return Ok(newJwt);
+
+                }
+                else
+                {
+                    return BadRequest("Invalid Details");
+                }
+
+            }
+            return BadRequest("Invalid Token");
         }
 
     }

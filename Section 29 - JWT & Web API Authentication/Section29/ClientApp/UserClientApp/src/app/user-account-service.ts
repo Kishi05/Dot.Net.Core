@@ -42,4 +42,13 @@ export class UserAccountService {
       return this.httpClient.get(`${API_BASE_URL}/UserList`,{headers : headers});
   }
 
+  public postGenerateNewToken(): Observable<any>{
+
+    const token = localStorage.getItem('token'); 
+    const refreshToken = localStorage.getItem('refreshToken'); 
+
+    return this.httpClient.post(`${API_BASE_URL}/generate-new-jwt`,{token : token, refreshToken: refreshToken});
+
+  }
+
 }
